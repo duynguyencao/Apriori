@@ -1,0 +1,60 @@
+butter, whipped/sour cream (support_count=100) ---> whole milk (support_count=2513) | rule_support_count=66 | support=0.006711 | confidence=0.660000 | lift=2.583008 | conviction=2.189659
+butter, yogurt (support_count=144) ---> whole milk (support_count=2513) | rule_support_count=92 | support=0.009354 | confidence=0.638889 | lift=2.500387 | conviction=2.061648
+butter, root vegetables (support_count=127) ---> whole milk (support_count=2513) | rule_support_count=81 | support=0.008236 | confidence=0.637795 | lift=2.496107 | conviction=2.055423
+curd, tropical fruit (support_count=101) ---> whole milk (support_count=2513) | rule_support_count=64 | support=0.006507 | confidence=0.633663 | lift=2.479936 | conviction=2.032240
+butter, tropical fruit (support_count=98) ---> whole milk (support_count=2513) | rule_support_count=61 | support=0.006202 | confidence=0.622449 | lift=2.436047 | conviction=1.971877
+other vegetables, tropical fruit, yogurt (support_count=121) ---> whole milk (support_count=2513) | rule_support_count=75 | support=0.007626 | confidence=0.619835 | lift=2.425816 | conviction=1.958317
+domestic eggs, tropical fruit (support_count=112) ---> whole milk (support_count=2513) | rule_support_count=68 | support=0.006914 | confidence=0.607143 | lift=2.376144 | conviction=1.895050
+other vegetables, root vegetables, yogurt (support_count=127) ---> whole milk (support_count=2513) | rule_support_count=77 | support=0.007829 | confidence=0.606299 | lift=2.372842 | conviction=1.890989
+domestic eggs, root vegetables (support_count=141) ---> whole milk (support_count=2513) | rule_support_count=84 | support=0.008541 | confidence=0.595745 | lift=2.331536 | conviction=1.841618
+citrus fruit, root vegetables (support_count=174) ---> other vegetables (support_count=1903) | rule_support_count=102 | support=0.010371 | confidence=0.586207 | lift=3.029608 | conviction=1.949059
+other vegetables, sugar (support_count=106) ---> whole milk (support_count=2513) | rule_support_count=62 | support=0.006304 | confidence=0.584906 | lift=2.289115 | conviction=1.793530
+root vegetables, tropical fruit, whole milk (support_count=118) ---> other vegetables (support_count=1903) | rule_support_count=69 | support=0.007016 | confidence=0.584746 | lift=3.022057 | conviction=1.942201
+root vegetables, tropical fruit (support_count=207) ---> other vegetables (support_count=1903) | rule_support_count=121 | support=0.012303 | confidence=0.584541 | lift=3.020999 | conviction=1.941244
+curd, yogurt (support_count=170) ---> whole milk (support_count=2513) | rule_support_count=99 | support=0.010066 | confidence=0.582353 | lift=2.279125 | conviction=1.782567
+citrus fruit, whipped/sour cream (support_count=107) ---> whole milk (support_count=2513) | rule_support_count=62 | support=0.006304 | confidence=0.579439 | lift=2.267722 | conviction=1.770217
+pip fruit, root vegetables (support_count=153) ---> whole milk (support_count=2513) | rule_support_count=88 | support=0.008948 | confidence=0.575163 | lift=2.250988 | conviction=1.752401
+curd, other vegetables (support_count=169) ---> whole milk (support_count=2513) | rule_support_count=97 | support=0.009863 | confidence=0.573964 | lift=2.246296 | conviction=1.747469
+butter, other vegetables (support_count=197) ---> whole milk (support_count=2513) | rule_support_count=113 | support=0.011490 | confidence=0.573604 | lift=2.244885 | conviction=1.745992
+tropical fruit, whipped/sour cream (support_count=136) ---> whole milk (support_count=2513) | rule_support_count=78 | support=0.007931 | confidence=0.573529 | lift=2.244593 | conviction=1.745687
+other vegetables, root vegetables, tropical fruit (support_count=121) ---> whole milk (support_count=2513) | rule_support_count=69 | support=0.007016 | confidence=0.570248 | lift=2.231750 | conviction=1.732357
+curd, root vegetables (support_count=107) ---> whole milk (support_count=2513) | rule_support_count=61 | support=0.006202 | confidence=0.570093 | lift=2.231146 | conviction=1.731734
+root vegetables, tropical fruit (support_count=207) ---> whole milk (support_count=2513) | rule_support_count=118 | support=0.011998 | confidence=0.570048 | lift=2.230969 | conviction=1.731553
+tropical fruit, whipped/sour cream (support_count=136) ---> other vegetables (support_count=1903) | rule_support_count=77 | support=0.007829 | confidence=0.566176 | lift=2.926088 | conviction=1.859068
+root vegetables, yogurt (support_count=254) ---> whole milk (support_count=2513) | rule_support_count=143 | support=0.014540 | confidence=0.562992 | lift=2.203354 | conviction=1.703594
+frankfurter, yogurt (support_count=110) ---> whole milk (support_count=2513) | rule_support_count=61 | support=0.006202 | confidence=0.554545 | lift=2.170296 | conviction=1.671291
+root vegetables, whipped/sour cream (support_count=168) ---> whole milk (support_count=2513) | rule_support_count=93 | support=0.009456 | confidence=0.553571 | lift=2.166484 | conviction=1.667644
+domestic eggs, other vegetables (support_count=219) ---> whole milk (support_count=2513) | rule_support_count=121 | support=0.012303 | confidence=0.552511 | lift=2.162336 | conviction=1.663694
+fruit/vegetable juice, root vegetables (support_count=118) ---> other vegetables (support_count=1903) | rule_support_count=65 | support=0.006609 | confidence=0.550847 | lift=2.846865 | conviction=1.795620
+pork, rolls/buns (support_count=111) ---> whole milk (support_count=2513) | rule_support_count=61 | support=0.006202 | confidence=0.549550 | lift=2.150744 | conviction=1.652754
+onions, whole milk (support_count=119) ---> other vegetables (support_count=1903) | rule_support_count=65 | support=0.006609 | confidence=0.546218 | lift=2.822942 | conviction=1.777303
+frozen vegetables, other vegetables (support_count=175) ---> whole milk (support_count=2513) | rule_support_count=95 | support=0.009659 | confidence=0.542857 | lift=2.124552 | conviction=1.628559
+fruit/vegetable juice, root vegetables (support_count=118) ---> whole milk (support_count=2513) | rule_support_count=64 | support=0.006507 | confidence=0.542373 | lift=2.122657 | conviction=1.626835
+domestic eggs, yogurt (support_count=141) ---> whole milk (support_count=2513) | rule_support_count=76 | support=0.007728 | confidence=0.539007 | lift=2.109485 | conviction=1.614958
+root vegetables, whole milk, yogurt (support_count=143) ---> other vegetables (support_count=1903) | rule_support_count=77 | support=0.007829 | confidence=0.538462 | lift=2.782853 | conviction=1.747433
+margarine, rolls/buns (support_count=145) ---> whole milk (support_count=2513) | rule_support_count=78 | support=0.007931 | confidence=0.537931 | lift=2.105273 | conviction=1.611197
+frozen vegetables, root vegetables (support_count=114) ---> whole milk (support_count=2513) | rule_support_count=61 | support=0.006202 | confidence=0.535088 | lift=2.094146 | conviction=1.601343
+rolls/buns, whipped/sour cream (support_count=144) ---> whole milk (support_count=2513) | rule_support_count=77 | support=0.007829 | confidence=0.534722 | lift=2.092715 | conviction=1.600085
+cream cheese, yogurt (support_count=122) ---> whole milk (support_count=2513) | rule_support_count=65 | support=0.006609 | confidence=0.532787 | lift=2.085141 | conviction=1.593457
+pip fruit, yogurt (support_count=177) ---> whole milk (support_count=2513) | rule_support_count=94 | support=0.009558 | confidence=0.531073 | lift=2.078435 | conviction=1.587635
+whipped/sour cream, yogurt (support_count=204) ---> whole milk (support_count=2513) | rule_support_count=107 | support=0.010880 | confidence=0.524510 | lift=2.052747 | conviction=1.565719
+rolls/buns, root vegetables (support_count=239) ---> whole milk (support_count=2513) | rule_support_count=125 | support=0.012710 | confidence=0.523013 | lift=2.046888 | conviction=1.560804
+baking powder (support_count=174) ---> whole milk (support_count=2513) | rule_support_count=91 | support=0.009253 | confidence=0.522989 | lift=2.046793 | conviction=1.560725
+pip fruit, root vegetables (support_count=153) ---> other vegetables (support_count=1903) | rule_support_count=80 | support=0.008134 | confidence=0.522876 | lift=2.702304 | conviction=1.690351
+sausage, tropical fruit (support_count=137) ---> whole milk (support_count=2513) | rule_support_count=71 | support=0.007219 | confidence=0.518248 | lift=2.028241 | conviction=1.545368
+other vegetables, pip fruit (support_count=257) ---> whole milk (support_count=2513) | rule_support_count=133 | support=0.013523 | confidence=0.517510 | lift=2.025351 | conviction=1.543003
+tropical fruit, yogurt (support_count=288) ---> whole milk (support_count=2513) | rule_support_count=149 | support=0.015150 | confidence=0.517361 | lift=2.024770 | conviction=1.542528
+citrus fruit, root vegetables (support_count=174) ---> whole milk (support_count=2513) | rule_support_count=90 | support=0.009151 | confidence=0.517241 | lift=2.024301 | conviction=1.542145
+pastry, yogurt (support_count=174) ---> whole milk (support_count=2513) | rule_support_count=90 | support=0.009151 | confidence=0.517241 | lift=2.024301 | conviction=1.542145
+root vegetables, sausage (support_count=147) ---> whole milk (support_count=2513) | rule_support_count=76 | support=0.007728 | confidence=0.517007 | lift=2.023383 | conviction=1.541396
+root vegetables, shopping bags (support_count=126) ---> other vegetables (support_count=1903) | rule_support_count=65 | support=0.006609 | confidence=0.515873 | lift=2.666112 | conviction=1.665900
+pork, root vegetables (support_count=134) ---> other vegetables (support_count=1903) | rule_support_count=69 | support=0.007016 | confidence=0.514925 | lift=2.661214 | conviction=1.662646
+other vegetables, yogurt (support_count=427) ---> whole milk (support_count=2513) | rule_support_count=219 | support=0.022267 | confidence=0.512881 | lift=2.007235 | conviction=1.528340
+butter, root vegetables (support_count=127) ---> other vegetables (support_count=1903) | rule_support_count=65 | support=0.006609 | confidence=0.511811 | lift=2.645119 | conviction=1.652039
+domestic eggs, root vegetables (support_count=141) ---> other vegetables (support_count=1903) | rule_support_count=72 | support=0.007321 | confidence=0.510638 | lift=2.639058 | conviction=1.648080
+other vegetables, rolls/buns, root vegetables (support_count=120) ---> whole milk (support_count=2513) | rule_support_count=61 | support=0.006202 | confidence=0.508333 | lift=1.989438 | conviction=1.514205
+pastry, tropical fruit (support_count=130) ---> whole milk (support_count=2513) | rule_support_count=66 | support=0.006711 | confidence=0.507692 | lift=1.986930 | conviction=1.512233
+other vegetables, whipped/sour cream (support_count=284) ---> whole milk (support_count=2513) | rule_support_count=144 | support=0.014642 | confidence=0.507042 | lift=1.984385 | conviction=1.510239
+fruit/vegetable juice, yogurt (support_count=184) ---> whole milk (support_count=2513) | rule_support_count=93 | support=0.009456 | confidence=0.505435 | lift=1.978094 | conviction=1.505330
+tropical fruit, whole milk, yogurt (support_count=149) ---> other vegetables (support_count=1903) | rule_support_count=75 | support=0.007626 | confidence=0.503356 | lift=2.601421 | conviction=1.623913
+rolls/buns, root vegetables (support_count=239) ---> other vegetables (support_count=1903) | rule_support_count=120 | support=0.012201 | confidence=0.502092 | lift=2.594890 | conviction=1.619792
