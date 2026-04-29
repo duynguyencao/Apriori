@@ -1,0 +1,3 @@
+algorithm,mining_time_seconds,rule_time_seconds,total_time_seconds,peak_tree_nodes,total_tree_nodes,frequent_itemset_count,rule_count,time_complexity,space_complexity,optimal_tree_strategy
+Apriori,2.6948892916552722,0.0021306672133505344,2.697019958868623,5789,8620,725,60,O(sum_k |Ck| * |T| * k),O(max(|Ck|) + hash tree size),
+FP-Growth,0.10205104202032089,0.0021251249127089977,0.10417616693302989,21051,33155,747,62,O(|T| * avg_transaction_length + recursive conditional mining),O(size of FP-tree + conditional FP-trees),support_desc

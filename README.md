@@ -48,6 +48,16 @@ Run the following command:
 python arm.py
 ```
 
+##### Run FP-Growth with the same output schema
+```python
+python fp_growth.py
+```
+
+##### Compare Apriori vs FP-Growth on time, space, and tree-node counts
+```python
+python compare_algorithms.py
+```
+
 ## Important variables
 ```
 MINSUP - Minimum support
@@ -150,6 +160,22 @@ Generated structured outputs:
 - `outputs/structured/association_rules.json`
 - `outputs/structured/mining_results.json`
 
+FP-Growth also writes the same structured schema under:
+
+- `outputs/fp_growth/structured/frequent_itemsets.csv`
+- `outputs/fp_growth/structured/frequent_itemsets.json`
+- `outputs/fp_growth/structured/association_rules.csv`
+- `outputs/fp_growth/structured/association_rules.json`
+- `outputs/fp_growth/structured/mining_results.json`
+
+The benchmark report is saved under:
+
+- `outputs/comparison/algorithm_comparison.txt`
+- `outputs/comparison/algorithm_comparison.csv`
+- `outputs/comparison/algorithm_comparison.json`
+
+FP-Growth also evaluates multiple FP-tree orderings and selects the most compact tree on the current dataset. The chosen ordering is recorded in `outputs/fp_growth/fp_growth_summary.json`.
+
 Why these visualizations are appropriate:
 
 - **Bar chart**: shows the strongest frequent itemsets quickly.
@@ -182,10 +208,3 @@ OS: Ubuntu 16.04 LTS
 | Low confidence(MIN_CONF=0.1) Low support count(MINSUP=10)              | 11390   |    35196    |
 
 All the frequent itemsets and rules generated using the above mentioned configurations can be found in the 'results' folder.
-
-## Members
-[Shubham Jha](http://github.com/shubhamjha97)
-
-[Praneet Mehta](http://github.com/praneetmehta)
-
-[Abhinav Jain](http://github.com/abhinav1112)

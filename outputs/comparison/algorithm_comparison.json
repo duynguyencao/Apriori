@@ -1,0 +1,28 @@
+[
+  {
+    "algorithm": "Apriori",
+    "mining_time_seconds": 2.6948892916552722,
+    "rule_time_seconds": 0.0021306672133505344,
+    "total_time_seconds": 2.697019958868623,
+    "peak_tree_nodes": 5789,
+    "total_tree_nodes": 8620,
+    "frequent_itemset_count": 725,
+    "rule_count": 60,
+    "time_complexity": "O(sum_k |Ck| * |T| * k)",
+    "space_complexity": "O(max(|Ck|) + hash tree size)",
+    "optimal_tree_strategy": ""
+  },
+  {
+    "algorithm": "FP-Growth",
+    "mining_time_seconds": 0.10205104202032089,
+    "rule_time_seconds": 0.0021251249127089977,
+    "total_time_seconds": 0.10417616693302989,
+    "peak_tree_nodes": 21051,
+    "total_tree_nodes": 33155,
+    "frequent_itemset_count": 747,
+    "rule_count": 62,
+    "time_complexity": "O(|T| * avg_transaction_length + recursive conditional mining)",
+    "space_complexity": "O(size of FP-tree + conditional FP-trees)",
+    "optimal_tree_strategy": "support_desc"
+  }
+]
