@@ -1,12 +1,30 @@
 import math
 import os
+import importlib
 
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
-import networkx as nx
-import plotly.graph_objects as go
-import seaborn as sns
+def _optional_import(module_name):
+	try:
+		return importlib.import_module(module_name)
+	except ModuleNotFoundError:
+		return None
+
+
+matplotlib = _optional_import('matplotlib')
+if matplotlib is not None:
+	matplotlib.use('Agg')
+	plt = _optional_import('matplotlib.pyplot')
+else:
+	plt = None
+
+nx = _optional_import('networkx')
+sns = _optional_import('seaborn')
+go_module = _optional_import('plotly.graph_objects')
+go = go_module
+
+VISUALIZATION_BACKEND_AVAILABLE = all(
+	backend is not None
+	for backend in (plt, nx, sns, go)
+)
 
 
 def ensure_directory(path):
@@ -18,6 +36,29 @@ def ensure_directory(path):
 	'''
 	os.makedirs(path, exist_ok=True)
 
+
+def write_placeholder_html(output_path, title, message):
+	'''
+	Ghi file HTML thay thế khi môi trường chưa cài Plotly.
+
+	Mục tiêu là giữ pipeline không bị gãy ở bước xuất HTML tương tác.
+	'''
+	with open(output_path, 'w', encoding='utf-8') as handle:
+		handle.write(
+			'<!DOCTYPE html>\n'
+			'<html lang="vi">\n'
+			'<head>\n'
+			'  <meta charset="utf-8">\n'
+			f'  <title>{title}</title>\n'
+			'  <style>body{font-family:Arial,sans-serif;margin:40px;line-height:1.6}code{background:#f4f4f4;padding:2px 4px;border-radius:4px}</style>\n'
+			'</head>\n'
+			'<body>\n'
+			f'  <h1>{title}</h1>\n'
+			f'  <p>{message}</p>\n'
+			'</body>\n'
+			'</html>\n'
+		)
+
 def setup_matplotlib_font():
 	'''
 	Cấu hình font mặc định để Matplotlib hiển thị tiếng Việt tốt hơn.
@@ -26,6 +67,8 @@ def setup_matplotlib_font():
 	- Một số môi trường có thể thiếu font đầy đủ glyph tiếng Việt.
 	- `DejaVu Sans` thường có sẵn và hỗ trợ khá tốt.
 	'''
+	if plt is None:
+		return
 	plt.rcParams['font.family'] = 'DejaVu Sans'
 	plt.rcParams['axes.unicode_minus'] = False
 	# Theme doanh nghiệp cho ảnh tĩnh: nền lưới xám nhạt, màu dịu (chuẩn báo cáo).
@@ -145,6 +188,14 @@ def save_bar_chart_html(itemsets, output_path):
 
 	Phù hợp khi người dùng muốn hover để đọc đầy đủ itemset dài.
 	'''
+	if go is None:
+		write_placeholder_html(
+			output_path,
+			'Top nhóm sản phẩm thường được mua cùng nhau',
+			'Plotly chưa được cài trong môi trường hiện tại nên HTML tương tác này được thay bằng trang mô tả.'
+		)
+		return
+
 	labels = [record['itemset_label'] for record in itemsets]
 	values = [record['support_count'] for record in itemsets]
 	supports = [record.get('support', None) for record in itemsets]
@@ -203,6 +254,14 @@ def save_scatter_html(rules, output_path):
 	- hover được tên luật đầy đủ
 	- nhìn đồng thời 4 metric trên một biểu đồ
 	'''
+	if go is None:
+		write_placeholder_html(
+			output_path,
+			'Bản đồ chất lượng luật kết hợp',
+			'Plotly chưa được cài trong môi trường hiện tại nên HTML tương tác này được thay bằng trang mô tả.'
+		)
+		return
+
 	fig = go.Figure(
 		go.Scatter(
 			x=[record['rule_support'] for record in rules],
@@ -245,6 +304,14 @@ def save_scatter_golden_html(all_rules, golden_rules, output_path):
 	'''
 	Tạo một scatter plot riêng để highlight “luật vàng” phục vụ thuyết trình/demo.
 	'''
+	if go is None:
+		write_placeholder_html(
+			output_path,
+			'Luật vàng nổi bật',
+			'Plotly chưa được cài trong môi trường hiện tại nên HTML tương tác này được thay bằng trang mô tả.'
+		)
+		return
+
 	def scatter_trace(rules, name, color):
 		return go.Scatter(
 			x=[record['rule_support'] for record in rules],
@@ -346,6 +413,14 @@ def save_network_png(rules, output_path):
 
 
 def save_network_html(rules, output_path):
+	if go is None:
+		write_placeholder_html(
+			output_path,
+			'Bản đồ luồng hành vi mua sắm của khách hàng',
+			'Plotly chưa được cài trong môi trường hiện tại nên HTML tương tác này được thay bằng trang mô tả.'
+		)
+		return
+
 	'''
 	Vẽ network graph tương tác bằng Plotly.
 
@@ -508,6 +583,14 @@ def save_heatmap_png(rules, output_path, top_n_heatmap_items):
 
 
 def save_heatmap_html(rules, output_path, top_n_heatmap_items):
+	if go is None:
+		write_placeholder_html(
+			output_path,
+			'Bản đồ nhiệt liên kết giữa các mặt hàng',
+			'Plotly chưa được cài trong môi trường hiện tại nên HTML tương tác này được thay bằng trang mô tả.'
+		)
+		return
+
 	'''
 	Vẽ heatmap tương tác bằng Plotly.
 
@@ -576,6 +659,13 @@ def generate_visualizations(
 	ensure_directory(static_dir)
 	ensure_directory(interactive_dir)
 	ensure_directory(insights_dir)
+	if not VISUALIZATION_BACKEND_AVAILABLE:
+		with open(os.path.join(insights_dir, 'visualizations_unavailable.txt'), 'w', encoding='utf-8') as handle:
+			handle.write(
+				'Interactive/static chart generation was skipped because one or more '
+				'visualization dependencies are not installed in the current Python environment.'
+			)
+		return
 
 	# Mỗi loại biểu đồ có tiêu chí chọn top-N riêng.
 	# Ví dụ:
