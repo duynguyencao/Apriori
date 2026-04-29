@@ -15,8 +15,11 @@ Các file chính:
 - `hash_tree.py`: cấu trúc `Tree/Node` cho hash tree + hàm sinh subset `generate_subsets`.
 - `timing_wrapper.py`: decorator `@timeit` để in thời gian chạy.
 - `visualize.py`: module dựng biểu đồ PNG và HTML từ structured outputs.
+- `fp_growth.py`: pipeline FP-Growth (FP-tree) + sinh rule + xuất output/visualization riêng.
+- `compare_algorithms.py`: benchmark so sánh Apriori vs FP-Growth và sinh ảnh benchmark.
+- `config.py`: file cấu hình dùng chung cho cả 2 thuật toán và benchmark.
 - `data/groceries.csv`: dữ liệu giao dịch.
-- `outputs/association_rules.txt`, `outputs/frequent_itemsets.txt`: kết quả xuất ra.
+- `outputs/*`: kết quả xuất ra theo từng thuật toán.
 
 ### 2) Cách khởi động (run)
 
@@ -32,11 +35,34 @@ Script sẽ:
 - tạo mapping item → số nguyên và lưu `reverse_map.pkl`
 - chạy Apriori để tạo `l_final.pkl` (danh sách frequent itemsets theo từng \(k\))
 - sinh luật kết hợp và tính các metric chuẩn của association rule
-- ghi file kết quả vào thư mục `outputs/`
+- ghi file kết quả vào thư mục `outputs/apriori/`
+- ghi structured outputs vào `outputs/apriori/structured/`
+- ghi biểu đồ vào `visualizations/apriori/`
+
+Chạy FP-Growth:
+
+```bash
+python fp_growth.py
+```
+
+Kết quả tương ứng:
+
+- `outputs/fp_growth/`
+- `outputs/fp_growth/structured/`
+- `visualizations/fp_growth/`
+
+Chạy benchmark:
+
+```bash
+python compare_algorithms.py
+```
+
+- báo cáo so sánh nằm ở `outputs/comparison/`
+- ảnh benchmark nằm ở `visualizations/benchmark_performance.png`
 
 ### 3) Các tham số cấu hình quan trọng
 
-Các biến đặt ở đầu `arm.py`:
+Các biến cấu hình hiện được gom về `config.py` để cả Apriori và FP-Growth dùng chung:
 
 - **`MINSUP`**: ngưỡng **support count** tối thiểu (đang dùng `60`).
   - Lưu ý: code so sánh `> MINSUP` (lớn hơn), không phải `>=`.
@@ -390,11 +416,27 @@ Kết quả `res` là list các subset độ dài đúng `k` (mỗi subset là l
 
 Sau khi chạy xong `python arm.py`, bạn sẽ có:
 
-- `outputs/frequent_itemsets.txt`: toàn bộ frequent itemsets, gồm cả `support_count` và `support`
-- `outputs/association_rules.txt`: toàn bộ luật thỏa `MIN_CONF`, `MIN_LIFT`, `MIN_CONVICTION`, gồm `support`, `confidence`, `lift`, `conviction`
-- `outputs/structured/*.csv` và `outputs/structured/*.json`: dữ liệu đã chuẩn hóa để phân tích tiếp hoặc vẽ chart
-- `visualizations/static/*.png`: các biểu đồ tĩnh
-- `visualizations/interactive/*.html`: các biểu đồ tương tác
+- **Apriori**:
+  - `outputs/apriori/frequent_itemsets.txt`
+  - `outputs/apriori/association_rules.txt`
+  - `outputs/apriori/structured/*.csv` và `outputs/apriori/structured/*.json`
+  - `visualizations/apriori/static/*.png`
+  - `visualizations/apriori/interactive/*.html`
+
+Chạy `python fp_growth.py` sẽ sinh:
+
+- **FP-Growth**:
+  - `outputs/fp_growth/frequent_itemsets.txt`
+  - `outputs/fp_growth/association_rules.txt`
+  - `outputs/fp_growth/structured/*.csv` và `outputs/fp_growth/structured/*.json`
+  - `visualizations/fp_growth/static/*.png`
+  - `visualizations/fp_growth/interactive/*.html`
+
+Chạy `python compare_algorithms.py` sẽ sinh:
+
+- **Benchmark**:
+  - `outputs/comparison/*`
+  - `visualizations/benchmark_performance.png`
 - `reverse_map.pkl`: mapping id → item
 - `l_final.pkl`: cấu trúc `L_final` (list các dict support counts theo từng \(k\))
 

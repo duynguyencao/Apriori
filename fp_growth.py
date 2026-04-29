@@ -5,16 +5,8 @@ from collections import defaultdict
 from itertools import combinations
 from time import perf_counter
 
+import config
 from arm import (
-	MINSUP,
-	MIN_CONF,
-	MIN_CONVICTION,
-	MIN_LIFT,
-	RUN_VISUALIZATIONS,
-	TOP_N_HEATMAP_ITEMS,
-	TOP_N_ITEMSETS,
-	TOP_N_NETWORK_RULES,
-	TOP_N_RULES,
 	applymap,
 	build_frequent_itemset_record,
 	build_rule_record,
@@ -30,8 +22,15 @@ from timing_wrapper import timeit
 from visualize import generate_visualizations
 
 
-DEFAULT_OUTPUT_DIR = os.path.join('outputs', 'fp_growth')
-DEFAULT_VISUALIZATION_DIR = os.path.join('visualizations', 'fp_growth')
+MINSUP = config.MINSUP
+RUN_VISUALIZATIONS = config.RUN_VISUALIZATIONS
+TOP_N_ITEMSETS = config.TOP_N_ITEMSETS
+TOP_N_RULES = config.TOP_N_RULES
+TOP_N_NETWORK_RULES = config.TOP_N_NETWORK_RULES
+TOP_N_HEATMAP_ITEMS = config.TOP_N_HEATMAP_ITEMS
+
+DEFAULT_OUTPUT_DIR = config.FP_GROWTH_OUTPUT_DIR
+DEFAULT_VISUALIZATION_DIR = config.FP_GROWTH_VIS_DIR
 
 
 def _sorted_items(items, support_counts, strategy):

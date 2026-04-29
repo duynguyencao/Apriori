@@ -1,9 +1,9 @@
 [
   {
     "algorithm": "Apriori",
-    "mining_time_seconds": 2.6948892916552722,
-    "rule_time_seconds": 0.0021306672133505344,
-    "total_time_seconds": 2.697019958868623,
+    "mining_time_seconds": 3.4854301000013947,
+    "rule_time_seconds": 0.0029795998707413673,
+    "total_time_seconds": 3.488409699872136,
     "peak_tree_nodes": 5789,
     "total_tree_nodes": 8620,
     "frequent_itemset_count": 725,
@@ -14,9 +14,9 @@
   },
   {
     "algorithm": "FP-Growth",
-    "mining_time_seconds": 0.10205104202032089,
-    "rule_time_seconds": 0.0021251249127089977,
-    "total_time_seconds": 0.10417616693302989,
+    "mining_time_seconds": 0.15505079994909465,
+    "rule_time_seconds": 0.0026175000239163637,
+    "total_time_seconds": 0.15766829997301102,
     "peak_tree_nodes": 21051,
     "total_tree_nodes": 33155,
     "frequent_itemset_count": 747,

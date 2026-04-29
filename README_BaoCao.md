@@ -27,3 +27,11 @@ Dữ liệu được lấy từ `visualizations/insights/golden_rules.txt` sau k
   **Support**: 0.006202 | **Confidence**: 0.622449 | **Lift**: 2.436047 | **Conviction**: 1.971877
 - **Action/Hành động**: đặt gợi ý mua kèm whole milk trên bảng giá/kệ của tropical fruit (cross-sell tại điểm chạm).
 
+## Ghi chú so sánh Apriori và FP-Growth (phần báo cáo)
+
+- **Kết quả “luật vàng” thường tương đồng** nếu cả hai thuật toán dùng cùng ngưỡng lọc (`MINSUP`, `MIN_CONF`, `MIN_LIFT`, `MIN_CONVICTION`) vì bản chất chúng khai phá từ cùng dữ liệu.
+- **Khác biệt chính nằm ở hiệu năng**:
+  - **Apriori**: phải sinh candidate theo từng mức \(k\) và quét dữ liệu nhiều lần để đếm support.
+  - **FP-Growth**: nén dữ liệu vào FP-tree, khai phá theo conditional pattern base nên **giảm đáng kể số lần quét dữ liệu** và tránh bùng nổ candidate.
+- **Ý nghĩa thực tế**: khi số hóa đơn (transactions) trong `groceries.csv` tăng lên, FP-Growth thường mở rộng tốt hơn và là lựa chọn phù hợp để chạy định kỳ trong môi trường thực tế.
+

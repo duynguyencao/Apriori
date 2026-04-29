@@ -5,9 +5,14 @@ from collections import defaultdict
 from itertools import combinations
 from time import perf_counter
 
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+
+import config
 from arm import (
-	HASH_DENOMINATOR,
-	MINSUP,
 	applymap,
 	apriori_gen,
 	calculate_rule_metrics,
@@ -28,11 +33,104 @@ from fp_growth import (
 
 
 OUTPUT_DIR = os.path.join('outputs', 'comparison')
+BENCHMARK_DIR = os.path.join('visualizations', 'benchmark')
 
 
 def _ensure_directory(path):
 	os.makedirs(path, exist_ok=True)
 
+def _setup_benchmark_style():
+	"""
+	Chuẩn hóa style cho toàn bộ biểu đồ benchmark.
+	"""
+	_ensure_directory(BENCHMARK_DIR)
+	sns.set_theme(style="whitegrid", palette="muted")
+	plt.rcParams['font.family'] = 'DejaVu Sans'
+	plt.rcParams['axes.unicode_minus'] = False
+
+
+def save_stacked_time_chart(apriori_result, fp_growth_result):
+	"""
+	Biểu đồ cột chồng: tách Mining Time và Rule Generation Time.
+
+	Mục đích:
+	- Cho thấy FP-Growth thắng mạnh ở giai đoạn mining (khai phá itemsets).
+	- Giai đoạn sinh luật thường “gần như nhau” vì đều phải duyệt/split từ frequent itemsets.
+	"""
+	_setup_benchmark_style()
+	labels = ['Apriori', 'FP-Growth']
+	mining = [apriori_result['mining_time_seconds'], fp_growth_result['mining_time_seconds']]
+	rule = [apriori_result['rule_time_seconds'], fp_growth_result['rule_time_seconds']]
+
+	plt.figure(figsize=(9, 5))
+	plt.bar(labels, mining, label='Mining Time', color='#4c78a8')
+	plt.bar(labels, rule, bottom=mining, label='Rule Generation Time', color='#f58518')
+	plt.suptitle('Benchmark thời gian (cột chồng): Mining vs Sinh luật', fontsize=13, fontweight='bold')
+	plt.title('FP-Growth tối ưu mạnh ở Mining; sinh luật thường tương đương', fontsize=9, fontstyle='italic')
+	plt.ylabel('Thời gian (giây)')
+	plt.xlabel('Thuật toán')
+	plt.legend(loc='upper right')
+
+	for idx, total in enumerate([mining[0] + rule[0], mining[1] + rule[1]]):
+		plt.text(idx, total, f'{total:.3f}s', ha='center', va='bottom', fontsize=9)
+
+	plt.tight_layout()
+	plt.savefig(os.path.join(BENCHMARK_DIR, 'benchmark_time_stacked.png'), dpi=200, facecolor='white')
+	plt.close()
+
+
+def save_scalability_line_chart(data_path, minsup_values):
+	"""
+	Biểu đồ đường đánh giá scalability theo nhiều mức MINSUP.
+
+	Cách làm:
+	- Chạy cả 2 thuật toán với danh sách MINSUP giảm dần.
+	- Vẽ đường thời gian tổng chạy (total_time_seconds).
+	"""
+	_setup_benchmark_style()
+
+	rows = []
+	for minsup in minsup_values:
+		ap = _apriori_with_stats(data_path, minsup=minsup)
+		fp = _fp_growth_with_stats(data_path, minsup=minsup)
+		rows.append({'algorithm': 'Apriori', 'minsup': minsup, 'total_time_seconds': ap['total_time_seconds']})
+		rows.append({'algorithm': 'FP-Growth', 'minsup': minsup, 'total_time_seconds': fp['total_time_seconds']})
+	df = pd.DataFrame(rows)
+
+	plt.figure(figsize=(10, 5))
+	sns.lineplot(data=df, x='minsup', y='total_time_seconds', hue='algorithm', marker='o')
+	plt.gca().invert_xaxis()  # minsup càng nhỏ -> bài toán càng khó
+	plt.suptitle('Scalability theo MINSUP (càng thấp càng khó)', fontsize=13, fontweight='bold')
+	plt.title('Apriori thường tăng nhanh khi MINSUP giảm; FP-Growth ổn định hơn', fontsize=9, fontstyle='italic')
+	plt.xlabel('MINSUP (support count)')
+	plt.ylabel('Tổng thời gian (giây)')
+	plt.tight_layout()
+	plt.savefig(os.path.join(BENCHMARK_DIR, 'benchmark_scalability_line.png'), dpi=200, facecolor='white')
+	plt.close()
+
+
+def save_memory_nodes_chart(apriori_result, fp_growth_result):
+	"""
+	Biểu đồ cột so sánh “không gian/bộ nhớ” qua số node của cấu trúc dữ liệu.
+
+	- Apriori: dùng tổng node của hash-tree theo từng level (total_tree_nodes).
+	- FP-Growth: dùng tổng node FP-tree + tổng node conditional trees (total_tree_nodes).
+	"""
+	_setup_benchmark_style()
+	labels = ['Apriori (HashTree)', 'FP-Growth (FPTree)']
+	nodes = [apriori_result['total_tree_nodes'], fp_growth_result['total_tree_nodes']]
+
+	plt.figure(figsize=(9, 5))
+	sns.barplot(x=labels, y=nodes, hue=labels, legend=False, palette='muted')
+	plt.suptitle('Benchmark không gian: số node cấu trúc dữ liệu', fontsize=13, fontweight='bold')
+	plt.title('Node càng nhiều thường càng tốn RAM và chi phí truy cập', fontsize=9, fontstyle='italic')
+	plt.ylabel('Tổng số node (ước lượng)')
+	plt.xlabel('Thuật toán')
+	for idx, value in enumerate(nodes):
+		plt.text(idx, value, f'{value}', ha='center', va='bottom', fontsize=9)
+	plt.tight_layout()
+	plt.savefig(os.path.join(BENCHMARK_DIR, 'benchmark_memory_nodes.png'), dpi=200, facecolor='white')
+	plt.close()
 
 def _count_hash_tree_nodes(tree_or_node):
 	"""
@@ -58,7 +156,7 @@ def _subset_with_stats(c_list, transactions):
 	"""
 	if not c_list:
 		return {}, 0
-	tree = Tree(c_list, k=HASH_DENOMINATOR, max_leaf_size=100)
+	tree = Tree(c_list, k=config.HASH_DENOMINATOR, max_leaf_size=100)
 	for transaction in transactions:
 		subsets = generate_subsets(transaction, len(c_list[0]))
 		for sub in subsets:
@@ -69,7 +167,7 @@ def _subset_with_stats(c_list, transactions):
 	return candidate_counts, _count_hash_tree_nodes(tree)
 
 
-def _apriori_with_stats(data_path, minsup=MINSUP):
+def _apriori_with_stats(data_path, minsup=config.MINSUP):
 	"""
 	Chạy Apriori theo đúng luồng hiện có nhưng đo thêm node và thời gian.
 	"""
@@ -157,7 +255,7 @@ def _apriori_with_stats(data_path, minsup=MINSUP):
 	}
 
 
-def _fp_growth_with_stats(data_path, minsup=MINSUP):
+def _fp_growth_with_stats(data_path, minsup=config.MINSUP):
 	"""
 	Chạy FP-Growth theo cây tối ưu nhất và đo thêm node/time.
 	"""
@@ -304,8 +402,14 @@ def _write_reports(apriori_result, fp_growth_result):
 	with open(os.path.join(OUTPUT_DIR, 'algorithm_comparison.txt'), 'w', encoding='utf-8') as handle:
 		handle.write('\n'.join(summary_lines) + '\n')
 
+	# Vẽ bộ benchmark chuyên nghiệp.
+	save_stacked_time_chart(apriori_result, fp_growth_result)
+	save_memory_nodes_chart(apriori_result, fp_growth_result)
+	# Scalability: chạy thêm nhiều mức minsup (giảm dần).
+	save_scalability_line_chart(config.DATA_PATH, minsup_values=[100, 80, 60, 40, 20])
 
-def run_comparison(data_path='data/groceries.csv', minsup=MINSUP):
+
+def run_comparison(data_path=config.DATA_PATH, minsup=config.MINSUP):
 	apriori_result = _apriori_with_stats(data_path, minsup=minsup)
 	fp_growth_result = _fp_growth_with_stats(data_path, minsup=minsup)
 	_write_reports(apriori_result, fp_growth_result)

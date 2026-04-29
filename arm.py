@@ -5,19 +5,22 @@ import os
 from hash_tree import Tree, generate_subsets
 from timing_wrapper import timeit
 from visualize import generate_visualizations
+import config
 
-# Các tham số cấu hình chính của pipeline khai phá luật kết hợp.
-# Khi muốn thử nghiệm nhiều cấu hình, bạn chỉ cần chỉnh tại đây rồi chạy lại `python arm.py`.
-MINSUP = 60 # Ngưỡng support count tối thiểu để một itemset được xem là phổ biến.
-HASH_DENOMINATOR = 10 # Mẫu số của hàm băm trong hash tree.
-MIN_CONF = 0.5 # Ngưỡng confidence tối thiểu của rule.
-MIN_LIFT = 1.2 # Ngưỡng lift tối thiểu của rule.
-MIN_CONVICTION = 1.2 # Ngưỡng conviction tối thiểu của rule.
-RUN_VISUALIZATIONS = True
-TOP_N_ITEMSETS = 20
-TOP_N_RULES = 20
-TOP_N_NETWORK_RULES = 20
-TOP_N_HEATMAP_ITEMS = 15
+# Cấu hình đã được gom về `config.py` để Apriori/FP-Growth/Benchmark dùng chung.
+MINSUP = config.MINSUP
+HASH_DENOMINATOR = config.HASH_DENOMINATOR
+MIN_CONF = config.MIN_CONF
+MIN_LIFT = config.MIN_LIFT
+MIN_CONVICTION = config.MIN_CONVICTION
+RUN_VISUALIZATIONS = config.RUN_VISUALIZATIONS
+TOP_N_ITEMSETS = config.TOP_N_ITEMSETS
+TOP_N_RULES = config.TOP_N_RULES
+TOP_N_NETWORK_RULES = config.TOP_N_NETWORK_RULES
+TOP_N_HEATMAP_ITEMS = config.TOP_N_HEATMAP_ITEMS
+
+DEFAULT_OUTPUT_DIR = config.APRIORI_OUTPUT_DIR
+DEFAULT_VISUALIZATION_DIR = config.APRIORI_VIS_DIR
 
 @timeit
 def load_data(path):
@@ -204,11 +207,11 @@ def export_structured_outputs(rule_records, frequent_itemset_records, output_dir
 		'frequent_itemsets': frequent_itemset_records
 	}
 	with open(os.path.join(output_dir, 'association_rules.json'), 'w+', encoding='utf-8') as f:
-		json.dump(rule_records, f, indent=2)
+		json.dump(rule_records, f, ensure_ascii=False, indent=2)
 	with open(os.path.join(output_dir, 'frequent_itemsets.json'), 'w+', encoding='utf-8') as f:
-		json.dump(frequent_itemset_records, f, indent=2)
+		json.dump(frequent_itemset_records, f, ensure_ascii=False, indent=2)
 	with open(os.path.join(output_dir, 'mining_results.json'), 'w+', encoding='utf-8') as f:
-		json.dump(json_payload, f, indent=2)
+		json.dump(json_payload, f, ensure_ascii=False, indent=2)
 
 	with open(os.path.join(output_dir, 'association_rules.csv'), 'w+', newline='', encoding='utf-8') as f:
 		fieldnames = [
@@ -411,7 +414,7 @@ def generate_rules(frequent_items, total_transactions):
 					break	
 	return rules
 
-def display_rules(rules, frequent_items, total_transactions, write=False):
+def display_rules(rules, frequent_items, total_transactions, output_dir, write=False):
 	'''
 	Hiển thị và ghi kết quả ra file text, đồng thời export structured output.
 
@@ -421,8 +424,9 @@ def display_rules(rules, frequent_items, total_transactions, write=False):
 	- trả lại records để module visualization dùng trực tiếp
 	'''
 	reverse_map=pickle.load(open('reverse_map.pkl', 'rb'))
-	ensure_directory('outputs')
-	ensure_directory('outputs/structured')
+	ensure_directory(output_dir)
+	structured_dir = os.path.join(output_dir, 'structured')
+	ensure_directory(structured_dir)
 	# Sắp xếp rule để file output ưu tiên các luật mạnh và đáng chú ý nhất ở trên đầu.
 	sorted_rules = sorted(
 		rules,
@@ -445,7 +449,7 @@ def display_rules(rules, frequent_items, total_transactions, write=False):
 		key=lambda itemset: (itemset['support_count'], itemset['itemset_size']),
 		reverse=True
 	)
-	with open('outputs/association_rules.txt', 'w+') as f:
+	with open(os.path.join(output_dir, 'association_rules.txt'), 'w+', encoding='utf-8') as f:
 		for record in rule_records:
 			line = (
 				f'{record["antecedent_label"]} '
@@ -462,14 +466,14 @@ def display_rules(rules, frequent_items, total_transactions, write=False):
 			print(line)
 			f.write(line + '\n')
 
-	with open('outputs/frequent_itemsets.txt', 'w+') as f:
+	with open(os.path.join(output_dir, 'frequent_itemsets.txt'), 'w+', encoding='utf-8') as f:
 		for record in frequent_itemset_records:
 			f.write(
 				f'{record["itemset_label"]} '
 				f'(support_count={record["support_count"]}, support={format_metric(record["support"])})\n'
 			)
 
-	export_structured_outputs(rule_records, frequent_itemset_records, 'outputs/structured')
+	export_structured_outputs(rule_records, frequent_itemset_records, structured_dir)
 	return rule_records, frequent_itemset_records
 			
 if __name__=='__main__':
@@ -478,15 +482,21 @@ if __name__=='__main__':
 	# 2. Sinh rules và tính metric
 	# 3. Ghi output text + structured output
 	# 4. Nếu bật cờ, sinh thêm visualization
-	data_path = 'data/groceries.csv'
+	data_path = config.DATA_PATH
 	frequent_items, total_transactions = frequent_itemset_generation(data_path)
 	rules = generate_rules(frequent_items, total_transactions)
-	rule_records, frequent_itemset_records = display_rules(rules, frequent_items, total_transactions, write=True)
+	rule_records, frequent_itemset_records = display_rules(
+		rules,
+		frequent_items,
+		total_transactions,
+		output_dir=DEFAULT_OUTPUT_DIR,
+		write=True,
+	)
 	if RUN_VISUALIZATIONS:
 		generate_visualizations(
 			rule_records,
 			frequent_itemset_records,
-			output_dir='visualizations',
+			output_dir=DEFAULT_VISUALIZATION_DIR,
 			top_n_itemsets=TOP_N_ITEMSETS,
 			top_n_rules=TOP_N_RULES,
 			top_n_network_rules=TOP_N_NETWORK_RULES,

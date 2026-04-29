@@ -2,4 +2,6 @@ matplotlib
 networkx
 plotly
 seaborn
+pandas
+numpy
 

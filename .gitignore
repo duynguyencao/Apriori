@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtualenv
+.venv/
+venv/
+
+# Generated outputs
+outputs/
+visualizations/
+
+# Pickle artifacts
+*.pkl
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
