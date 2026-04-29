@@ -162,7 +162,7 @@ class FPTree:
 			conditional_support_counts = {
 				path_item: count
 				for path_item, count in conditional_support_counts.items()
-				if count >= minsup
+				if count > minsup
 			}
 			if not conditional_support_counts:
 				continue
@@ -331,7 +331,7 @@ def run_fp_growth_pipeline(
 	frequent_item_counts = {
 		item: count
 		for item, count in item_support_counts.items()
-		if count >= minsup
+		if count > minsup
 	}
 
 	if not frequent_item_counts:
@@ -360,7 +360,7 @@ def run_fp_growth_pipeline(
 	frequent_itemsets = {
 		tuple(sorted(itemset)): support
 		for itemset, support in frequent_itemsets.items()
-		if support >= minsup
+		if support > minsup
 	}
 	frequent_itemset_levels = _build_frequent_itemset_levels(frequent_itemsets)
 	rules = _generate_rules_from_itemsets(frequent_itemsets, total_transactions)
