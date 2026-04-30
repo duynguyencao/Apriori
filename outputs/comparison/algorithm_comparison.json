@@ -1,9 +1,9 @@
 [
   {
     "algorithm": "Apriori",
-    "mining_time_seconds": 3.4854301000013947,
-    "rule_time_seconds": 0.0029795998707413673,
-    "total_time_seconds": 3.488409699872136,
+    "mining_time_seconds": 3.486279299999296,
+    "rule_time_seconds": 0.0029464999970514327,
+    "total_time_seconds": 3.4892257999963476,
     "peak_tree_nodes": 5789,
     "total_tree_nodes": 8620,
     "frequent_itemset_count": 725,
@@ -14,13 +14,13 @@
   },
   {
     "algorithm": "FP-Growth",
-    "mining_time_seconds": 0.15505079994909465,
-    "rule_time_seconds": 0.0026175000239163637,
-    "total_time_seconds": 0.15766829997301102,
-    "peak_tree_nodes": 21051,
-    "total_tree_nodes": 33155,
-    "frequent_itemset_count": 747,
-    "rule_count": 62,
+    "mining_time_seconds": 0.14517870000418043,
+    "rule_time_seconds": 0.003500399994663894,
+    "total_time_seconds": 0.14867909999884432,
+    "peak_tree_nodes": 20996,
+    "total_tree_nodes": 32664,
+    "frequent_itemset_count": 725,
+    "rule_count": 60,
     "time_complexity": "O(|T| * avg_transaction_length + recursive conditional mining)",
     "space_complexity": "O(size of FP-tree + conditional FP-trees)",
     "optimal_tree_strategy": "support_desc"

@@ -267,7 +267,8 @@ def _fp_growth_with_stats(data_path, minsup=config.MINSUP):
 	frequent_item_counts = {
 		item: count
 		for item, count in item_support_counts.items()
-		if count >= minsup
+		# Đồng bộ với Apriori: chỉ giữ item nếu support_count > MINSUP
+		if count > minsup
 	}
 	best_tree_report, order_reports = evaluate_tree_orderings(transactions_mapped, frequent_item_counts)
 	ordered_transactions = []
@@ -292,7 +293,8 @@ def _fp_growth_with_stats(data_path, minsup=config.MINSUP):
 	frequent_itemsets = {
 		tuple(sorted(itemset)): support
 		for itemset, support in frequent_itemsets.items()
-		if support >= minsup
+		# Đồng bộ với Apriori: chỉ giữ itemset nếu support_count > MINSUP
+		if support > minsup
 	}
 	mining_time_seconds = perf_counter() - start
 

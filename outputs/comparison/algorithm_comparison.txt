@@ -1,4 +1,4 @@
 Comparison of Apriori vs FP-Growth
-Apriori: mining=3.485430s | total=3.488410s | peak_nodes=5789 | total_nodes=8620
-FP-Growth: mining=0.155051s | total=0.157668s | peak_nodes=21051 | total_nodes=33155 | optimal_tree=support_desc
+Apriori: mining=3.486279s | total=3.489226s | peak_nodes=5789 | total_nodes=8620
+FP-Growth: mining=0.145179s | total=0.148679s | peak_nodes=20996 | total_nodes=32664 | optimal_tree=support_desc
 Winner: Khac nhau: nhanh hon la FP-Growth, cay gon hon la Apriori
