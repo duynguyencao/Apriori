@@ -1,0 +1,28 @@
+{
+  "total_transactions": 9835,
+  "best_tree": {
+    "strategy": "support_desc",
+    "node_count": 20996,
+    "order_candidates": [
+      {
+        "strategy": "support_desc",
+        "node_count": 20996,
+        "build_time_seconds": 0.028660899995884392
+      },
+      {
+        "strategy": "support_asc",
+        "node_count": 27553,
+        "build_time_seconds": 0.07500189999700524
+      },
+      {
+        "strategy": "lexicographic",
+        "node_count": 25609,
+        "build_time_seconds": 0.08212030000140658
+      }
+    ],
+    "conditional_tree_count": 167,
+    "conditional_tree_nodes": 11668
+  },
+  "frequent_itemset_count": 725,
+  "rule_count": 60
+}

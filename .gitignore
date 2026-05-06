@@ -8,8 +8,8 @@ __pycache__/
 venv/
 
 # Generated outputs
-outputs/
-visualizations/
+# NOTE: We intentionally DO NOT ignore `outputs/` or `visualizations/`
+# so results can be committed and pushed for reports/reproducibility.
 
 # Pickle artifacts
 *.pkl
