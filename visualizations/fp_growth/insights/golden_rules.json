@@ -1,280 +1,6 @@
 [
   {
     "antecedent_ids": [
-      16,
-      162
-    ],
-    "antecedent_items": [
-      "butter",
-      "whipped/sour cream"
-    ],
-    "antecedent_label": "butter, whipped/sour cream",
-    "consequent_ids": [
-      166
-    ],
-    "consequent_items": [
-      "whole milk"
-    ],
-    "consequent_label": "whole milk",
-    "rule_size": 3,
-    "antecedent_size": 2,
-    "consequent_size": 1,
-    "rule_support_count": 66,
-    "rule_support": 0.006710726995424504,
-    "antecedent_support_count": 100,
-    "antecedent_support": 0.010167768174885612,
-    "consequent_support_count": 2513,
-    "consequent_support": 0.25551601423487547,
-    "confidence": 0.66,
-    "lift": 2.5830083565459607,
-    "conviction": 2.189658781662131
-  },
-  {
-    "antecedent_ids": [
-      16,
-      167
-    ],
-    "antecedent_items": [
-      "butter",
-      "yogurt"
-    ],
-    "antecedent_label": "butter, yogurt",
-    "consequent_ids": [
-      166
-    ],
-    "consequent_items": [
-      "whole milk"
-    ],
-    "consequent_label": "whole milk",
-    "rule_size": 3,
-    "antecedent_size": 2,
-    "consequent_size": 1,
-    "rule_support_count": 92,
-    "rule_support": 0.009354346720894764,
-    "antecedent_support_count": 144,
-    "antecedent_support": 0.014641586171835282,
-    "consequent_support_count": 2513,
-    "consequent_support": 0.25551601423487547,
-    "confidence": 0.6388888888888888,
-    "lift": 2.500386877127824,
-    "conviction": 2.0616479605803444
-  },
-  {
-    "antecedent_ids": [
-      16,
-      124
-    ],
-    "antecedent_items": [
-      "butter",
-      "root vegetables"
-    ],
-    "antecedent_label": "butter, root vegetables",
-    "consequent_ids": [
-      166
-    ],
-    "consequent_items": [
-      "whole milk"
-    ],
-    "consequent_label": "whole milk",
-    "rule_size": 3,
-    "antecedent_size": 2,
-    "consequent_size": 1,
-    "rule_support_count": 81,
-    "rule_support": 0.008235892221657347,
-    "antecedent_support_count": 127,
-    "antecedent_support": 0.012913065582104729,
-    "consequent_support_count": 2513,
-    "consequent_support": 0.25551601423487547,
-    "confidence": 0.6377952755905512,
-    "lift": 2.4961068585089814,
-    "conviction": 2.05542317809067
-  },
-  {
-    "antecedent_ids": [
-      41,
-      158
-    ],
-    "antecedent_items": [
-      "curd",
-      "tropical fruit"
-    ],
-    "antecedent_label": "curd, tropical fruit",
-    "consequent_ids": [
-      166
-    ],
-    "consequent_items": [
-      "whole milk"
-    ],
-    "consequent_label": "whole milk",
-    "rule_size": 3,
-    "antecedent_size": 2,
-    "consequent_size": 1,
-    "rule_support_count": 64,
-    "rule_support": 0.006507371631926792,
-    "antecedent_support_count": 101,
-    "antecedent_support": 0.010269445856634469,
-    "consequent_support_count": 2513,
-    "consequent_support": 0.25551601423487547,
-    "confidence": 0.6336633663366337,
-    "lift": 2.479936015885711,
-    "conviction": 2.0322400692507454
-  },
-  {
-    "antecedent_ids": [
-      16,
-      158
-    ],
-    "antecedent_items": [
-      "butter",
-      "tropical fruit"
-    ],
-    "antecedent_label": "butter, tropical fruit",
-    "consequent_ids": [
-      166
-    ],
-    "consequent_items": [
-      "whole milk"
-    ],
-    "consequent_label": "whole milk",
-    "rule_size": 3,
-    "antecedent_size": 2,
-    "consequent_size": 1,
-    "rule_support_count": 61,
-    "rule_support": 0.0062023385866802234,
-    "antecedent_support_count": 98,
-    "antecedent_support": 0.0099644128113879,
-    "consequent_support_count": 2513,
-    "consequent_support": 0.25551601423487547,
-    "confidence": 0.6224489795918368,
-    "lift": 2.4360468421351826,
-    "conviction": 1.971876502837357
-  },
-  {
-    "antecedent_ids": [
-      103,
-      158,
-      167
-    ],
-    "antecedent_items": [
-      "other vegetables",
-      "tropical fruit",
-      "yogurt"
-    ],
-    "antecedent_label": "other vegetables, tropical fruit, yogurt",
-    "consequent_ids": [
-      166
-    ],
-    "consequent_items": [
-      "whole milk"
-    ],
-    "consequent_label": "whole milk",
-    "rule_size": 4,
-    "antecedent_size": 3,
-    "consequent_size": 1,
-    "rule_support_count": 75,
-    "rule_support": 0.007625826131164209,
-    "antecedent_support_count": 121,
-    "antecedent_support": 0.012302999491611592,
-    "consequent_support_count": 2513,
-    "consequent_support": 0.25551601423487547,
-    "confidence": 0.6198347107438017,
-    "lift": 2.4258155114068005,
-    "conviction": 1.9583165712517407
-  },
-  {
-    "antecedent_ids": [
-      50,
-      158
-    ],
-    "antecedent_items": [
-      "domestic eggs",
-      "tropical fruit"
-    ],
-    "antecedent_label": "domestic eggs, tropical fruit",
-    "consequent_ids": [
-      166
-    ],
-    "consequent_items": [
-      "whole milk"
-    ],
-    "consequent_label": "whole milk",
-    "rule_size": 3,
-    "antecedent_size": 2,
-    "consequent_size": 1,
-    "rule_support_count": 68,
-    "rule_support": 0.006914082358922217,
-    "antecedent_support_count": 112,
-    "antecedent_support": 0.011387900355871887,
-    "consequent_support_count": 2513,
-    "consequent_support": 0.25551601423487547,
-    "confidence": 0.6071428571428571,
-    "lift": 2.376144050935137,
-    "conviction": 1.8950501455839532
-  },
-  {
-    "antecedent_ids": [
-      103,
-      124,
-      167
-    ],
-    "antecedent_items": [
-      "other vegetables",
-      "root vegetables",
-      "yogurt"
-    ],
-    "antecedent_label": "other vegetables, root vegetables, yogurt",
-    "consequent_ids": [
-      166
-    ],
-    "consequent_items": [
-      "whole milk"
-    ],
-    "consequent_label": "whole milk",
-    "rule_size": 4,
-    "antecedent_size": 3,
-    "consequent_size": 1,
-    "rule_support_count": 77,
-    "rule_support": 0.007829181494661922,
-    "antecedent_support_count": 127,
-    "antecedent_support": 0.012913065582104729,
-    "consequent_support_count": 2513,
-    "consequent_support": 0.25551601423487547,
-    "confidence": 0.6062992125984252,
-    "lift": 2.3728423222863158,
-    "conviction": 1.8909893238434166
-  },
-  {
-    "antecedent_ids": [
-      50,
-      124
-    ],
-    "antecedent_items": [
-      "domestic eggs",
-      "root vegetables"
-    ],
-    "antecedent_label": "domestic eggs, root vegetables",
-    "consequent_ids": [
-      166
-    ],
-    "consequent_items": [
-      "whole milk"
-    ],
-    "consequent_label": "whole milk",
-    "rule_size": 3,
-    "antecedent_size": 2,
-    "consequent_size": 1,
-    "rule_support_count": 84,
-    "rule_support": 0.008540925266903915,
-    "antecedent_support_count": 141,
-    "antecedent_support": 0.014336553126588714,
-    "consequent_support_count": 2513,
-    "consequent_support": 0.25551601423487547,
-    "confidence": 0.5957446808510638,
-    "lift": 2.331535589403188,
-    "conviction": 1.8416182805768868
-  },
-  {
-    "antecedent_ids": [
       31,
       124
     ],
@@ -302,5 +28,279 @@
     "confidence": 0.5862068965517241,
     "lift": 3.0296084222733612,
     "conviction": 1.9490594814438227
+  },
+  {
+    "antecedent_ids": [
+      124,
+      158,
+      166
+    ],
+    "antecedent_items": [
+      "root vegetables",
+      "tropical fruit",
+      "whole milk"
+    ],
+    "antecedent_label": "root vegetables, tropical fruit, whole milk",
+    "consequent_ids": [
+      103
+    ],
+    "consequent_items": [
+      "other vegetables"
+    ],
+    "consequent_label": "other vegetables",
+    "rule_size": 4,
+    "antecedent_size": 3,
+    "consequent_size": 1,
+    "rule_support_count": 69,
+    "rule_support": 0.007015760040671073,
+    "antecedent_support_count": 118,
+    "antecedent_support": 0.011997966446365024,
+    "consequent_support_count": 1903,
+    "consequent_support": 0.1934926283680732,
+    "confidence": 0.5847457627118644,
+    "lift": 3.0220570553185424,
+    "conviction": 1.9422014255625992
+  },
+  {
+    "antecedent_ids": [
+      124,
+      158
+    ],
+    "antecedent_items": [
+      "root vegetables",
+      "tropical fruit"
+    ],
+    "antecedent_label": "root vegetables, tropical fruit",
+    "consequent_ids": [
+      103
+    ],
+    "consequent_items": [
+      "other vegetables"
+    ],
+    "consequent_label": "other vegetables",
+    "rule_size": 3,
+    "antecedent_size": 2,
+    "consequent_size": 1,
+    "rule_support_count": 121,
+    "rule_support": 0.012302999491611592,
+    "antecedent_support_count": 207,
+    "antecedent_support": 0.021047280122013217,
+    "consequent_support_count": 1903,
+    "consequent_support": 0.1934926283680732,
+    "confidence": 0.5845410628019324,
+    "lift": 3.020999134344196,
+    "conviction": 1.941244487532661
+  },
+  {
+    "antecedent_ids": [
+      158,
+      162
+    ],
+    "antecedent_items": [
+      "tropical fruit",
+      "whipped/sour cream"
+    ],
+    "antecedent_label": "tropical fruit, whipped/sour cream",
+    "consequent_ids": [
+      167
+    ],
+    "consequent_items": [
+      "yogurt"
+    ],
+    "consequent_label": "yogurt",
+    "rule_size": 3,
+    "antecedent_size": 2,
+    "consequent_size": 1,
+    "rule_support_count": 61,
+    "rule_support": 0.0062023385866802234,
+    "antecedent_support_count": 136,
+    "antecedent_support": 0.013828164717844434,
+    "consequent_support_count": 1372,
+    "consequent_support": 0.13950177935943062,
+    "confidence": 0.4485294117647059,
+    "lift": 3.2152235894357744,
+    "conviction": 1.5603701067615656
+  },
+  {
+    "antecedent_ids": [
+      103,
+      158,
+      166
+    ],
+    "antecedent_items": [
+      "other vegetables",
+      "tropical fruit",
+      "whole milk"
+    ],
+    "antecedent_label": "other vegetables, tropical fruit, whole milk",
+    "consequent_ids": [
+      167
+    ],
+    "consequent_items": [
+      "yogurt"
+    ],
+    "consequent_label": "yogurt",
+    "rule_size": 4,
+    "antecedent_size": 3,
+    "consequent_size": 1,
+    "rule_support_count": 75,
+    "rule_support": 0.007625826131164209,
+    "antecedent_support_count": 168,
+    "antecedent_support": 0.01708185053380783,
+    "consequent_support_count": 1372,
+    "consequent_support": 0.13950177935943062,
+    "confidence": 0.44642857142857145,
+    "lift": 3.2001639941690962,
+    "conviction": 1.5544483985765123
+  },
+  {
+    "antecedent_ids": [
+      71
+    ],
+    "antecedent_items": [
+      "herbs"
+    ],
+    "antecedent_label": "herbs",
+    "consequent_ids": [
+      124
+    ],
+    "consequent_items": [
+      "root vegetables"
+    ],
+    "consequent_label": "root vegetables",
+    "rule_size": 2,
+    "antecedent_size": 1,
+    "consequent_size": 1,
+    "rule_support_count": 69,
+    "rule_support": 0.007015760040671073,
+    "antecedent_support_count": 160,
+    "antecedent_support": 0.01626842907981698,
+    "consequent_support_count": 1072,
+    "consequent_support": 0.10899847483477376,
+    "confidence": 0.43125,
+    "lift": 3.9564773787313436,
+    "conviction": 1.5665960882025955
+  },
+  {
+    "antecedent_ids": [
+      103,
+      158,
+      166
+    ],
+    "antecedent_items": [
+      "other vegetables",
+      "tropical fruit",
+      "whole milk"
+    ],
+    "antecedent_label": "other vegetables, tropical fruit, whole milk",
+    "consequent_ids": [
+      124
+    ],
+    "consequent_items": [
+      "root vegetables"
+    ],
+    "consequent_label": "root vegetables",
+    "rule_size": 4,
+    "antecedent_size": 3,
+    "consequent_size": 1,
+    "rule_support_count": 69,
+    "rule_support": 0.007015760040671073,
+    "antecedent_support_count": 168,
+    "antecedent_support": 0.01708185053380783,
+    "consequent_support_count": 1072,
+    "consequent_support": 0.10899847483477376,
+    "confidence": 0.4107142857142857,
+    "lift": 3.7680736940298507,
+    "conviction": 1.5120025881591717
+  },
+  {
+    "antecedent_ids": [
+      9,
+      103
+    ],
+    "antecedent_items": [
+      "beef",
+      "other vegetables"
+    ],
+    "antecedent_label": "beef, other vegetables",
+    "consequent_ids": [
+      124
+    ],
+    "consequent_items": [
+      "root vegetables"
+    ],
+    "consequent_label": "root vegetables",
+    "rule_size": 3,
+    "antecedent_size": 2,
+    "consequent_size": 1,
+    "rule_support_count": 78,
+    "rule_support": 0.007930859176410779,
+    "antecedent_support_count": 194,
+    "antecedent_support": 0.019725470259278087,
+    "consequent_support_count": 1072,
+    "consequent_support": 0.10899847483477376,
+    "confidence": 0.4020618556701031,
+    "lift": 3.6886924911524854,
+    "conviction": 1.4901232403625335
+  },
+  {
+    "antecedent_ids": [
+      9,
+      166
+    ],
+    "antecedent_items": [
+      "beef",
+      "whole milk"
+    ],
+    "antecedent_label": "beef, whole milk",
+    "consequent_ids": [
+      124
+    ],
+    "consequent_items": [
+      "root vegetables"
+    ],
+    "consequent_label": "root vegetables",
+    "rule_size": 3,
+    "antecedent_size": 2,
+    "consequent_size": 1,
+    "rule_support_count": 79,
+    "rule_support": 0.008032536858159633,
+    "antecedent_support_count": 209,
+    "antecedent_support": 0.02125063548551093,
+    "consequent_support_count": 1072,
+    "consequent_support": 0.10899847483477376,
+    "confidence": 0.37799043062200954,
+    "lift": 3.467850639148754,
+    "conviction": 1.4324562981502482
+  },
+  {
+    "antecedent_ids": [
+      103,
+      110
+    ],
+    "antecedent_items": [
+      "other vegetables",
+      "pip fruit"
+    ],
+    "antecedent_label": "other vegetables, pip fruit",
+    "consequent_ids": [
+      158
+    ],
+    "consequent_items": [
+      "tropical fruit"
+    ],
+    "consequent_label": "tropical fruit",
+    "rule_size": 3,
+    "antecedent_size": 2,
+    "consequent_size": 1,
+    "rule_support_count": 93,
+    "rule_support": 0.00945602440264362,
+    "antecedent_support_count": 257,
+    "antecedent_support": 0.026131164209456024,
+    "consequent_support_count": 1032,
+    "consequent_support": 0.10493136756481952,
+    "confidence": 0.36186770428015563,
+    "lift": 3.448613247669894,
+    "conviction": 1.4026380398526914
   }
 ]

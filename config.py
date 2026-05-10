@@ -12,8 +12,8 @@ DATA_PATH = 'data/groceries.csv'
 
 # Ngưỡng mining/rule filtering
 MINSUP = 60
-MIN_CONF = 0.5
-MIN_LIFT = 1.2
+MIN_CONF = 0.3
+MIN_LIFT = 3
 MIN_CONVICTION = 1.2
 
 # Tham số tối ưu đếm support (Apriori + hash tree)
@@ -24,7 +24,7 @@ RUN_VISUALIZATIONS = True
 TOP_N_ITEMSETS = 20
 TOP_N_RULES = 20
 TOP_N_NETWORK_RULES = 20
-TOP_N_HEATMAP_ITEMS = 15
+TOP_N_HEATMAP_ITEMS = 20
 
 # Output isolation
 APRIORI_OUTPUT_DIR = 'outputs/apriori'

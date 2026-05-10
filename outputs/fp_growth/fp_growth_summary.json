@@ -7,22 +7,22 @@
       {
         "strategy": "support_desc",
         "node_count": 20996,
-        "build_time_seconds": 0.028660899995884392
+        "build_time_seconds": 0.062188208999999994
       },
       {
         "strategy": "support_asc",
         "node_count": 27553,
-        "build_time_seconds": 0.07500189999700524
+        "build_time_seconds": 0.06960483299999998
       },
       {
         "strategy": "lexicographic",
         "node_count": 25609,
-        "build_time_seconds": 0.08212030000140658
+        "build_time_seconds": 0.04076704199999992
       }
     ],
     "conditional_tree_count": 167,
     "conditional_tree_nodes": 11668
   },
   "frequent_itemset_count": 725,
-  "rule_count": 60
+  "rule_count": 22
 }
